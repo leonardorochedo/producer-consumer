@@ -5,13 +5,14 @@ from dock import Dock
 from factory import Factory
 from shop import Shop
 
-dock = Dock()
+# Instancia a doca e a fábrica
 factory = Factory()
+dock = Dock(factory)
 
+# Instancia os caminhões e lojas
 trucks = []
 shops = []
 
-# Cria os caminhões e as lojas
 for i in range(2):
     trucks.append(Truck("Caminhão " + str(i+1)))
 

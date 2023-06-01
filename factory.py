@@ -7,17 +7,19 @@ class Factory():
         self.storage = 0
         self.semaphore = threading.Semaphore(1)
 
-    def loadCharge(self, weight):
+    def increaseStorage(self, charge):
         self.semaphore.acquire()
-        if (self.storage + weight <= self.capacity):
-            self.storage += weight
-            print(f"Carga de {weight} Kg armazenada na fábrica.")
+        if (self.storage + charge <= self.capacity):
+            if (charge > 0):
+                self.storage += charge
+                print(f"Carga de {charge} Kg armazenada na fábrica.")
         else:
-            print(f"Carga de {weight} Kg excede a capacidade da fábrica.")
+            print(f"Carga de {charge} Kg excede a capacidade da fábrica.")
         self.semaphore.release()
 
-    def unloadTruck(self):
+    def deliveryStorage(self):
         self.semaphore.acquire()
-        print(f"Carga de {self.storage} Kg retirada da fábrica.")
-        self.storage = 0
+        print(f"Carga de 40 Kg retirada da fábrica.")
+        self.storage -= 40
         self.semaphore.release()
+        return 40
